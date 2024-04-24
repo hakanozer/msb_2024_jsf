@@ -19,11 +19,25 @@ public class CustomerBean {
     private String user;
     private List<String> users = new ArrayList<>();
 
+    public CustomerBean() {
+        System.out.println("CustomerBean Call");
+    }
+
     public List<String> getUsers() {
+        users.clear();
         users.add("Ali");
         users.add("Veli");
         users.add("Erkan");
         return users;
+    }
+
+    public String sendForm() {
+        System.out.println(this);
+        return "index";
+    }
+
+    public String cancel() {
+        return "index";
     }
 
 }
