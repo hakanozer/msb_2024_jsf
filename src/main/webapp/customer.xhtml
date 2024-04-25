@@ -1,0 +1,43 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:ui = "http://java.sun.com/jsf/facelets"
+      xmlns:h = "http://java.sun.com/jsf/html"
+      xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<ui:composition template="/layout/template.xhtml" >
+   <ui:define name="header">
+      <title>Customers</title>
+      <meta name="description" content="Customers description" />
+   </ui:define>
+   <ui:define name="content">
+
+      <h2>Customers</h2>
+      <h:dataTable styleClass="table table-hover" id="dt1" value="${customerBean.customers}" var="item">
+         <h:column>
+            <f:facet name="header">ID</f:facet>
+            #{item.cid}
+         </h:column>
+         <h:column>
+            <f:facet name="header">Name</f:facet>
+            #{item.name}
+         </h:column>
+         <h:column>
+            <f:facet name="header">Surname</f:facet>
+            #{item.surname}
+         </h:column>
+         <h:column>
+            <f:facet name="header">City</f:facet>
+            #{item.city}
+         </h:column>
+         <h:column>
+            <f:facet name="header">Gender</f:facet>
+            #{item.gender}
+         </h:column>
+      </h:dataTable>
+
+   </ui:define>
+</ui:composition>
+</html>

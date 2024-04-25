@@ -1,6 +1,9 @@
 package org.works;
 
 import lombok.Data;
+import org.works.entities.Customer;
+import org.works.services.CustomerService;
+import org.works.utils.EntityManagerUtil;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -18,9 +21,16 @@ public class CustomerBean {
     private String city;
     private String user;
     private List<String> users = new ArrayList<>();
+    private List<Customer> customers = new ArrayList<>();
 
     public CustomerBean() {
-        System.out.println("CustomerBean Call");
+        refreshData();
+        //System.out.println("CustomerBean Call");
+    }
+
+    public void refreshData() {
+        CustomerService service = new CustomerService();
+        customers = service.customerAll();
     }
 
     public List<String> getUsers() {
@@ -32,7 +42,15 @@ public class CustomerBean {
     }
 
     public String sendForm() {
-        System.out.println(this);
+        Customer c = new Customer();
+        c.setName(name);
+        c.setSurname(surname);
+        c.setGender(gender);
+        c.setCity(city);
+        c.setUserName(user);
+        CustomerService service = new CustomerService();
+        service.customerSave(c);
+        refreshData();
         return "index";
     }
 
