@@ -15,6 +15,7 @@
    <ui:define name="content">
 
       <h2>Customers</h2>
+      <h:form>
       <h:dataTable styleClass="table table-hover" id="dt1" value="${customerBean.customers}" var="item">
          <h:column>
             <f:facet name="header">ID</f:facet>
@@ -36,7 +37,13 @@
             <f:facet name="header">Gender</f:facet>
             #{item.gender}
          </h:column>
+         <h:column>
+            <f:facet name="header">Action</f:facet>
+            <h:commandButton action="#{customerBean.delete(item.cid)}" styleClass="btn btn-danger btn-sm" value="Delete"></h:commandButton>
+            <h:commandButton action="#{customerBean.update(item.cid)}"  style="margin-left: 5px;" styleClass="btn btn-warning btn-sm" value="Update"></h:commandButton>
+         </h:column>
       </h:dataTable>
+      </h:form>
 
    </ui:define>
 </ui:composition>

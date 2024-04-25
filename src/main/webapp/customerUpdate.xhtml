@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <h2>Customer Save</h2>
+                <h2>Customer Update</h2>
                 <h:form>
                     <div class="mb-3">
                         <h:inputText id="name" maxlength="10" required="true" requiredMessage="Name Empty!" pt:placeholder="Name" styleClass="form-control" value="#{customerBean.name}" />
@@ -43,8 +43,7 @@
                             <f:selectItems value="#{customerBean.users}" />
                         </h:selectOneMenu>
                     </div>
-                    <h:commandButton styleClass="btn btn-success" value="Send" action="confirm" />
-                    <h:commandButton action="#{customerBean.reset}" styleClass="btn btn-danger" value="Reset"></h:commandButton>
+                    <h:commandButton styleClass="btn btn-success" value="Update" action="#{customerBean.updateSave}" />
                 </h:form>
             </div>
             <div class="col-sm-4"></div>
