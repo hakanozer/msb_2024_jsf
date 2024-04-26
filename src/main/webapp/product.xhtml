@@ -5,6 +5,7 @@
       xmlns:ui = "http://java.sun.com/jsf/facelets"
       xmlns:h = "http://java.sun.com/jsf/html"
       xmlns:f = "http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 <ui:composition template="/layout/template.xhtml" >
@@ -15,6 +16,82 @@
    <ui:define name="content">
 
       <h2>Product</h2>
+
+      <div class="card">
+         <h:form>
+            <h5 class="mt-0">TC Control</h5>
+            <h:panelGrid columns="3" cellpadding="7">
+               <p:outputLabel for="name" value="TC"/>
+               <p:inputText id="name" value="#{productBean.tc}"/>
+               <h:outputText id="display" value="#{productBean.enTc}"/>
+               <p:commandButton value="Submit" update="display" styleClass="mt-3" />
+            </h:panelGrid>
+         </h:form>
+      </div>
+
+      <div class="card">
+         <h:form>
+            <h5 class="mt-0">Phone Control</h5>
+            <h:panelGrid columns="3" cellpadding="7">
+               <p:outputLabel for="phoneID" value="Phone"/>
+               <p:inputText id="phoneID" value="#{productBean.phone}">
+                  <p:ajax event="keyup" update="displayPhone" process="@this"/>
+               </p:inputText>
+               <h:outputText id="displayPhone" value="#{productBean.enPhone}"/>
+            </h:panelGrid>
+         </h:form>
+      </div>
+
+
+      <div class="card">
+         <p:panelGrid
+                 columns="3"
+                 columnClasses="
+                  xs:col-4 sm:col-4 md:col-3 xl:col-1,
+                  xs:col-4 sm:col-4 md:col-6 xl:col-10,
+                  xs:col-4 sm:col-4 md:col-3 xl:col-1"
+         >
+
+            <h:outputText value="Name:"/>
+            <h:outputText value="Kobe Bryant"/>
+            <h:outputText value="true" />
+
+            <h:outputText value="Team:"/>
+            <h:outputText value="Los Angeles Lakers"/>
+            <h:outputText value="true" />
+
+            <h:outputText value="Position:"/>
+            <h:outputText value="Shooting Guard"/>
+            <h:outputText value="false" />
+
+            <h:outputText value="Number:"/>
+            <h:outputText value="24"/>
+            <h:outputText value="true" />
+         </p:panelGrid>
+      </div>
+
+      <div class="card">
+         <h5>Nested</h5>
+         <div class="ui-g">
+            <div class="ui-g-8 ui-g-nopad">
+               <div class="ui-g-6">6</div>
+               <div class="ui-g-6">6</div>
+               <div class="ui-g-12">12</div>
+            </div>
+            <div class="ui-g-4">4</div>
+         </div>
+      </div>
+
+      <div class="card">
+         <h4>Products</h4>
+         <div class="ui-g-12">
+            <div class="ui-g-4 ui-sm-12 ui-md-4 ui-lg-6 ui-xl-4" style="background-color: coral">Left</div>
+            <div class="ui-g-4 ui-sm-12 ui-md-4 ui-lg-6 ui-xl-4" style="background-color: cornflowerblue">Center</div>
+            <div class="ui-g-4 ui-sm-12 ui-md-4 ui-lg-6 ui-xl-4" style="background-color: lightseagreen">Right</div>
+         </div>
+      </div>
+
+
 
    </ui:define>
 </ui:composition>
